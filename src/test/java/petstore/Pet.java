@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 public class Pet {
 
     // Atributos:
-    String uri = "https://petstore.swagger.io/v2/pet"; // endereço da entidade exibida no swagger
+    String uri = "https://petstore.swagger.io/v2/pet";
 
 
     // Metodos e funções:
@@ -24,18 +24,20 @@ public class Pet {
 
     @Test
     public void incluirPet() throws IOException {
-        String jsonBody = lerJson("db/pet1.json"); // passando o caminho onde está o Body de envio
+        String jsonBody = lerJson("db/pet1.json");
 
         given()
                 .contentType("application/json")
-                .log().all() // mostrar o retorno no console
+                .log().all()
                 .body(jsonBody)
+
 
                 .when()
                 .post(uri)
 
+
                 .then()
-                .log().all() // mostrar o retorno no console
+                .log().all()
                 .statusCode(200);
     }
 
@@ -49,8 +51,10 @@ public class Pet {
                 .contentType("application/json")
                 .log().all()
 
+
                 .when()
                 .get(uri + "/" + petId)
+
 
                 .then()
                 .log().all()
@@ -58,4 +62,23 @@ public class Pet {
 
   }
 
+    @Test
+  public void alterarPet() throws IOException {
+   String jsonBody = lerJson("db/pet2.json");
+
+   given()
+           .contentType("application/json")
+           .log().all()
+           .body(jsonBody)
+
+
+           .when()
+           .put(uri)
+
+
+           .then()
+           .log().all() //
+           .statusCode(200);
+
+    }
 }
