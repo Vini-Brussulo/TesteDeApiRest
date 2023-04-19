@@ -97,9 +97,8 @@ public class Pet {
 
 
                 .then()
-                .log().all() // comando para mostrar a informação no console
-                .statusCode(200); // validando o statusCode esperado da requisição
-
+                .log().all() 
+                .statusCode(200); 
     }
 
 }
