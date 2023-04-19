@@ -81,4 +81,25 @@ public class Pet {
            .statusCode(200);
 
     }
+
+    @Test
+    public void deletarPet() throws IOException {
+
+        String petId = "2023";
+
+
+        given()
+                .contentType("application/json")
+                .log().all()
+
+                .when()
+                .delete(uri + "/" + petId)
+
+
+                .then()
+                .log().all() // comando para mostrar a informação no console
+                .statusCode(200); // validando o statusCode esperado da requisição
+
+    }
+
 }
